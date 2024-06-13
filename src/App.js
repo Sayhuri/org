@@ -108,7 +108,7 @@ function App() {
   const registrarColaborador = (colaborador) => {
       console.log(colaborador)
       //Spread operator
-      actualizarColaboradores([...colaboradores,colaborador])
+      actualizarColaboradores([...colaboradores,{ ...colaborador, id: uuid() }])
     }  
   
   //Eliminar colaborador
@@ -119,7 +119,7 @@ function App() {
   }
 
   //actualizar color equipo
-  const actualizarColor = (id, color) => {
+  const actualizarColor = (color,id) => {
     console.log(id,color)
     const equiposActualizados = equipos.map((equipo) => {
       if(equipo.id === id){
@@ -140,7 +140,7 @@ function App() {
     console.log(id)
         const colaboradoresActualizados = colaboradores.map((colaborador) => {
           if(colaborador.id === id){
-            colaborador.fav =!colaborador.fav
+            colaborador.fav = !colaborador.fav
           }
           return colaborador
         })
@@ -154,13 +154,14 @@ function App() {
         equipos={equipos.map((equipo) => equipo.titulo)} 
         registrarColaborador={registrarColaborador}
         crearEquipo={crearEquipo}
-      /> }
+        /> 
+      }
       <MiOrg cambiarMostrar ={cambiarMostrar} />
       {
         equipos.map((equipo) => <Equipo 
           key={equipo.titulo} 
           datos={equipo} 
-          colaboradores={colaboradores.filter((colaborador) => colaborador.equipo === equipo.titulo)}
+          colaboradores={colaboradores.filter(colaborador => colaborador.equipo === equipo.titulo)}
           eliminarColaborador={eliminarColaborador}
           actualizarColor={actualizarColor}
           like={like}

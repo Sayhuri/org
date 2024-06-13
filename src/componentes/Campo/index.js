@@ -7,7 +7,7 @@ const Campo = (props) => {
     const { type = "text" } = props
 
     const manejarcambio = (e) => {
-        props.setValor(e.target.value)
+        props.actualizarValor(e.target.value)
     }
 
     return <div className={`campo campo-${type}`}>

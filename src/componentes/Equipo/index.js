@@ -4,7 +4,7 @@ import "./Equipo.css";
 
 const Equipo = (props) => {
     //Destructuracion
-    const { titulo, colorPrimario, colorSecundario, id } = props.datos
+    const { colorPrimario, colorSecundario, titulo, id } = props.datos
     const {colaboradores, eliminarColaborador, actualizarColor, like} = props
     const obj = {backgroundColor: hexToRgba(colorPrimario,0.6)}
     const estiloTitulo = {borderColor: colorPrimario}
@@ -13,9 +13,9 @@ const Equipo = (props) => {
             colaboradores.length > 0 &&
             <section className="equipo" style={obj}>
                 <input 
-                    type="color"
+                    type='color'
                     className="input-color"
-                    value={hexToRgba(colorPrimario,0.6)}
+                    value={colorPrimario}
                     onChange={(evento) => {
                         actualizarColor(evento.target.value, id)
                     }}

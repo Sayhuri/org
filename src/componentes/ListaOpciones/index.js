@@ -7,7 +7,8 @@ const ListaOpciones = (props) => {
     // })
 
     const manejarcambio = (e) => {
-        props.setValor(e.target.value)
+        props.actualizarEquipo(e.target.value)
+        //props.setValor(e.target.value)
     }
 
 

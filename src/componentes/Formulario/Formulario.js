@@ -6,31 +6,32 @@ import "./Formulario.css";
 
 const Formulario = (props) => {
 
-    const [nombre,setNombre] = useState("")
-    const [puesto,setPuesto] = useState("")
-    const [foto,setFoto] = useState("")
-    const [equipo,setEquipo] = useState("")
+    const [nombre,actualizarNombre] = useState("")
+    const [puesto,actualizarPuesto] = useState("")
+    const [foto,actualizarFoto] = useState("")
+    const [equipo,actualizarEquipo] = useState("")
 
-    const [titulo,setTitulo] = useState("")
-    const [color,setColor] = useState("")
+    const [titulo,actualizarTitulo] = useState("")
+    const [color,actualizarColor] = useState("")
 
     const {registrarColaborador, crearEquipo} = props
 
     const manejarEnvio = (evento) => {
         evento.preventDefault()
-        console.log("Manejar el envio")
         let datosEnviar = {
+            //  id: props.datos.id,
             nombre,
             puesto,
             foto,
             equipo
         }
+        console.log("Manejar el envio",datosEnviar)
         registrarColaborador(datosEnviar)
     }
 
     const manejarNuevoEquipo = (e) => {
         e.preventDefault()
-        crearEquipo({titulo,colorPrimario: color})
+        crearEquipo({titulo, colorPrimario: color})
     }
 
     return <section className="formulario">
@@ -41,25 +42,25 @@ const Formulario = (props) => {
                 placeholder="Ingresar nombre" 
                 required={true} 
                 valor={nombre} 
-                setValor={setNombre}
+                actualizarValor={actualizarNombre}
             />
             <Campo
                 titulo="Puesto"
                 placeholder="Ingresar puesto"
                 required
                 valor={puesto}
-                setValor={setPuesto}
+                actualizarValor={actualizarPuesto}
             />
             <Campo
                 titulo="Foto" 
                 placeholder="Ingresar enlace de foto" 
                 required 
                 valor={foto} 
-                setValor={setFoto}
+                actualizarValor={actualizarFoto}
             />
             <ListaOpciones
                 valor={equipo}
-                setValor={setEquipo}
+                actualizarEquipo={actualizarEquipo}
                 equipos= {props.equipos}
             />
             <Boton>Crear</Boton>
@@ -71,14 +72,14 @@ const Formulario = (props) => {
                 placeholder="Ingresar titulo" 
                 required 
                 valor={titulo} 
-                setValor={setTitulo}
+                actualizarValor={actualizarTitulo}
             />
             <Campo
                 titulo="Color" 
                 placeholder="Ingresar el color en Hex" 
                 required
                 valor={color} 
-                setValor={setColor}
+                actualizarValor={actualizarColor}
                 type="color"
             />
             <Boton>Registrar Equipo</Boton>
